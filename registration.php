@@ -11,17 +11,7 @@ if(isset($_POST["submit"])){
         $dob=$_POST['dob'];
 		$mblno=$_POST['mblno'];
 		$type=$_POST['type'];
-		
-
-        admininfo($name, $email, $password, $dob, $mblno, $type );
-		if(admininfo($name, $email, $password, $dob, $mblno, $type)==true){
-            echo "<script>
-                    alert('Record Added');
-                    document.location='login.php';
-                 </script>";
-        }
-    }
-        
+    }        
 }
 
 ?>
@@ -30,7 +20,7 @@ if(isset($_POST["submit"])){
     <title>Registration</title>
 </head>
 <body>
-    <form method="post">
+    <form method="post" action="registration.php">
         <table border="1"align="center" width="60%" >
             
             <tr background="hotel.jpg"><th colspan="3" align="right" width="60%">
