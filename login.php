@@ -3,7 +3,7 @@
 
 	//redirect to welcome page if logged in.
 	if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == "true") {
-		header('location: welcome.php');
+		header('location: customerPage.php');
 		exit();
 	}
 
@@ -16,7 +16,7 @@
 	   		$userName = $_POST['user'];
 	   		$password = $_POST['password'];
 	   		if(isValidUser($userName, $password)) {
-				header("location: welcome.php");
+				header("location: customerPage.php");
 			}
 			else {
 				echo '<div style="width: 100%; text-align: center; color: #FF4000;">

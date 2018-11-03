@@ -1,7 +1,8 @@
+<!DOCTYPE html>
 <html>
 
 <head><title>Blue Bird</title></head>
-<form>
+<body>
 <table border="1"align="center" width="60%" >
 	
 			<tr background="hotel.jpg"><th colspan="3" align="right" width="60%">
@@ -36,7 +37,7 @@
 			     <th background="hotel.jpg"><h3>www.bluebird.com</h3>
 		    </tr>
 	</table>
-</form>
+</body>
 
 
 </html>

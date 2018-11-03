@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head><title>About</title></head>
-<form>
+<body>
 <table border="1"align="center" width="60%" >
 	
 			<tr background="hotel.jpg"><th colspan="3" align="right" width="60%">
@@ -37,5 +37,5 @@
 							
 					
 	</table>
-</form>
+</body>
 </html>

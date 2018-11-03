@@ -1,8 +1,9 @@
+<!DOCTYPE html>
 <html>
 <head>
 <title>customer page</title>
 </head>
-<form>
+<body>
 <table border="1"align="center" width="60%" >
 	
 			<tr background="hotel.jpg"><th colspan="3" align="right" width="60%">
@@ -40,7 +41,7 @@
 							<br/>
 							</tr>
 	</table>
-</form>
+</body>
 
 </html>
 

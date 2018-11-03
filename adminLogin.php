@@ -1,5 +1,7 @@
+<!DOCTYPE html>
 <html>
 <head><title>Login</title></head>
+<body>
 <form method="post">
 <table border="1"align="center" width="60%" >
 	
@@ -52,9 +54,11 @@
 			
 			<tr>
 			     <th background="hotel.jpg"><h3>www.bluebird.com</h3>
+			     </th>
 		    </tr>
 	</table>
 </form>
+</body>
 </html>
 
 
