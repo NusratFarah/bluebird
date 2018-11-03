@@ -3,14 +3,29 @@
 $name = $email = $password = $dob = $mblno = $type = "";
 
 if(isset($_POST["submit"])){
-    if (isset($_POST["name"]) && isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["dob"]) && isset($_POST["mblno"]) && isset($_POST["type"])) {
-        echo "working";
+    if (isset($_POST["name"]) && isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["dob"]) && isset($_POST["mblno"]) && isset($_POST["confirmPassword"])) {
+        echo "working<br>";
         $name=$_POST['name'];
         $email=$_POST['email'];
         $password=$_POST['password'];
+        $confirmPassword=$_POST['confirmPassword'];
         $dob=$_POST['dob'];
 		$mblno=$_POST['mblno'];
-		$type=$_POST['type'];
+		
+
+        if ($password==$confirmPassword) {
+            $xml = new SimpleXMLElement("xml/userInfo.xml",null, true);
+
+            $user = $xml->addChild("user", null);
+            $user->addChild("username",$name);
+            $user->addChild("password",md5($password));
+            $user->addChild("email",$email);
+            $user->addChild("dob",$dob);
+            $user->addChild("mobile",$mblno);
+            $user->addChild("type","customer");
+            $xml->asXml("xml/userInfo.xml");
+            header("location: login.php");
+        }
     }        
 }
 
