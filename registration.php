@@ -1,4 +1,11 @@
 <?php
+    session_start();
+
+    //redirect to welcome page if logged in.
+    if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == "true") {
+        header('location: welcome.php');
+        exit();
+    }
 
 $name = $email = $password = $dob = $mblno = $type = "";
 
@@ -30,27 +37,34 @@ if(isset($_POST["submit"])){
 }
 
 ?>
+
+
+<!DOCTYPE html>
 <html>
 <head>
     <title>Registration</title>
 </head>
+
 <body>
     <form method="post" action="registration.php">
         <table border="1"align="center" width="60%" >
-            
-            <tr background="hotel.jpg"><th colspan="3" align="right" width="60%">
-                <label style="font-family:Algerian" ><center><h1>Blue Bird<h1><center></label>
-            </tr>
-
-            <tr background="white.jpg">
-                <td align="center"> 
-                    <a href="login.php">Home</a> <label>||</label>
-                    <a href="promotional.php">Promotional Offers</a> <label>||</label>
-                    <a href="About.php">About The Hotel</a>  <label>||</label>
-                    <a href="login.php">Login</a> <label>||</label>
-                                       
-                </td>
-            </tr>
+            <tr background="hotel.jpg">
+            <th colspan="3" align="right" width="60%">
+                <h1 style="font-family: Algerian; text-align: center;">Blue Bird</h1>
+            </th>
+        </tr>
+        
+        <tr background="white.jpg">
+            <td align="center"> 
+                <span> || </span>
+                <a href="welcome.php">Home</a> 
+                <span> || </span>
+                <a href="services.php">Services</a></li>
+                <span> || </span>
+                <a href="About.php">About The Hotel</a>
+                <span> || </span>               
+            </td>
+        </tr>
 
             <tr  background="white.jpg">
                 <td>
