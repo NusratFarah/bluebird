@@ -1,9 +1,7 @@
 <?php  
 	session_start();
-	if(isset($_POST['logout']))
-	{
-		session_unset();
-		session_destroy();
-		header("location: home.php");
-	}
+	
+	session_unset();
+	session_destroy();
+	header("location: welcome.php");
 ?>
