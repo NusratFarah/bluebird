@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE userLogin [
-<!ELEMENT userLogin (user)+>
-<!ELEMENT user (fullName , username , password , email)>
-<!ELEMENT fullName (#PCDATA)>
-<!ELEMENT username (#PCDATA)>
-<!ELEMENT password (#PCDATA)>
-<!ELEMENT email (#PCDATA)>
-]>
