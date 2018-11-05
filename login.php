@@ -15,19 +15,22 @@
    		if (isset($_POST['user']) && isset($_POST['password'])) {
 	   		$userName = $_POST['user'];
 	   		$password = $_POST['password'];
-	   		if(isValidUser($userName, $password)) {
-				header("location: customerPage.php");
-			}
-			else {
-				echo '<div style="width: 100%; text-align: center; color: #FF4000;">
-						<h2>wrong username/password.</h2>
+	   		
+	   		if (empty($userName) || empty($password)) {
+	   			echo '<div style="width: 100%; text-align: center; color: #FF4000;">
+						<h2>one/more field empty.</h2>
 					</div>';
+	   		}
+			else {
+				if(isValidUser($userName, $password)) {
+					header("location: customerPage.php");
+				}
+				else {
+					echo '<div style="width: 100%; text-align: center; color: #FF4000;">
+							<h2>wrong username/password.</h2>
+						</div>';
+				}
 			}
-	   	}
-	   	else {
-	   		echo '<div style="width: 100%; text-align: center; color: #FF4000;">
-					<h2>One or More Field Empty.</h2>
-				</div>';
 	   	}
 	}
 	function isValidUser($name, $password)
