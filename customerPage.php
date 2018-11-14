@@ -1,3 +1,22 @@
+
+<?php
+
+	session_start();
+	if(!isset($_SESSION['un'])){
+		header("location:login.php");
+	}
+	else{
+        $_SESSION['flag1']= 0;
+		 if($_SERVER["REQUEST_METHOD"] == "POST") {
+			if(isset($_POST['submit'])){
+				 header("location:logout.php");
+			 }
+		 }
+	}
+	
+	?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -37,7 +56,7 @@
 							
 							<br/></br><hr/>
 							
-							<center><a  href="http://localhost/nusrat/login.php"><input  name="Log Out" type="button" value="Log Out"/>
+							<center><form method="post" action="logout.php"><input  name="submit" type="submit" value="LogOut"/></form>
 							<br/>
 							</tr>
 	</table>

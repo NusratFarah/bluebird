@@ -1,60 +1,57 @@
 <?php
-	session_start();
+session_start();
+?>
+     
 
-	//redirect to welcome page if logged in.
-	if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == "true") {
-		header('location: customerPage.php');
-		exit();
-	}
+	 <?php
+          $error="";
+		  $logoutmess="";
+$user = array(
+	"nusrat"=>"123", 
+	"palika"=>"456", 
+	"anika"=>"789",  
+	"Shovon"=>"147", 
+	"Tisha"=>"123456");
 
-   	$userName="";
-   	$password="";
-   	
-   	if(isset($_POST['submit']))
-   	{
-   		if (isset($_POST['user']) && isset($_POST['password'])) {
-	   		$userName = $_POST['user'];
-	   		$password = $_POST['password'];
-	   		
-	   		if (empty($userName) || empty($password)) {
-	   			echo '<div style="width: 100%; text-align: center; color: #FF4000;">
-						<h2>one/more field empty.</h2>
-					</div>';
-	   		}
-			else {
-				if(isValidUser($userName, $password)) {
-					header("location: customerPage.php");
-				}
-				else {
-					echo '<div style="width: 100%; text-align: center; color: #FF4000;">
-							<h2>wrong username/password.</h2>
-						</div>';
-				}
-			}
-	   	}
-	}
-	function isValidUser($name, $password)
+$flag=0;
+//$_SESSION['flag1']= 0;
+
+foreach($user as $un=> $pass)
+{
+	if($_SERVER['REQUEST_METHOD']== "POST")
 	{
-		$XMLname = "";
-		$XMLpassword = "";
-		$userLogin = simplexml_load_file("xml/userInfo.xml");
-		foreach($userLogin->user as $user)
+		if($_POST['un']== $un && $_POST['pw']== $pass)
 		{
-			$XMLname = $user->username->__toString();
-			$XMLpassword = $user->password->__toString();
-			
-			if($name==$XMLname && md5($password)==$XMLpassword)
-			{
-				$fn = $XMLfullname;
-				$_SESSION['userName'] = $name;
-				$_SESSION['loggedIn'] = "true";
-				return TRUE;
-			}
+			$_SESSION['un']= $un;
+			header("location:customerPage.php");
+			$flag=1;
+			break;
+		}
+		else
+		{
+			$flag=2;
 		}
 	}
+}
+
+if($flag==2)
+{
+	$error="Wrong Username or Password";
+	//$_SESSION['ErrorMsg']= "Wrong Username or Password";
+	//header("location:login.php");
+}
+
+if(isset($_SESSION['flag1']))
+{
+	$logoutmess="You're Logged out";
+    session_destroy();
+}
+else
+{
+	echo "";
+}
 
 ?>
-
 
 <!DOCTYPE html>
 <html>
@@ -91,18 +88,19 @@
 							<tr>
 								<td>User Name</td>
 								<td>:</td>
-								<td><input type="text" name="user" ></td>
+								<td><input type="text" name="un" ></td>
 							</tr>
 
 							<tr>
 								<td>Password</td>
 								<td>:</td>
-								<td><input type="password" name="password"></td>
+								<td><input type="password" name="pw"></td>
 							</tr>
 						</table>
 
 						<hr />
-						<input name="remember" type="checkbox">Remember Me
+						<p color="red"><?php echo $error?></p>
+						<p color="red"><?php echo $logoutmess?></p>
 						<br/><br/>
 						<input name="submit" type="submit" value="Login">
 						<span>&nbsp;&nbsp;</span>
